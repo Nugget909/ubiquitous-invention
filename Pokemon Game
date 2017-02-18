@@ -117,7 +117,8 @@ def pmove(php,aihp):
     print("Move 2: ",pmoves[1])
     print("Move 3: ",pmoves[2])
     print("Move 4: ",pmoves[3])
-    select=input("Select move 1-4 ")
+    print("Heal 5: ")
+    select=input("Select move 1-5 ")
     
     if select=="1":
         print("Pikachu used Tackle")
@@ -163,9 +164,16 @@ def pmove(php,aihp):
         if aihp>0:
             aimove(php,aihp)
 
+    if select=="5":
+        print("Used potion")
+        heal=randint(15,23)
+        php=(php+heal)
+        print("Pikachu healed ",heal," points of damage")
+        aimove(php,aihp)
+
 # All AI moves after first
 def aimove(php,aihp):
-    numb=randint(0,3)
+    numb=randint(0,4)
 
     if numb==0:
         print("Pidgot used Gust")
@@ -214,6 +222,12 @@ def aimove(php,aihp):
             print("Pikachu: ",php,"HP")
             print("Pidgot: ",aihp,"HP")
             pmove(php,aihp)
+
+    if numb==4:
+        print("Red used a potion")
+        heal=randint(15,23)
+        aihp=(aihp+heal)
+        pmove(php,aihp)
 
 
 
