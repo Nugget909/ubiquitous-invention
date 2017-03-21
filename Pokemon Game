@@ -229,7 +229,7 @@ def pmove(php,aihp):
         damage=randint(5,10)
         aihp=(aihp-damage)
         print(lpokemon,"did ",damage,"damage")
-        if aihp < 0:
+        if aihp <= 0:
             print("Oppenent's ",spokemon,"fainted")
             print("You win")
         if aihp>0:
@@ -240,7 +240,7 @@ def pmove(php,aihp):
         damage=randint(12,20)
         aihp=(aihp-damage)
         print(lpokemon,"did ",damage,"damage")
-        if aihp < 0:
+        if aihp <= 0:
             print("Oppenent's ",spokemon,"fainted")
             print("You win")
         if aihp>0:
@@ -251,7 +251,7 @@ def pmove(php,aihp):
          damage=randint(14,16)
          aihp=(aihp-damage)
          print(lpokemon,"did ",damage,"damage")
-         if aihp < 0:
+         if aihp <= 0:
             print("Oppenent's ",spokemon,"fainted")
             print("You win")
          if aihp>0:
@@ -262,7 +262,7 @@ def pmove(php,aihp):
         damage=randint(15,23)
         aihp=(aihp-damage)
         print(lpokemon,"did",damage,"damage")
-        if aihp < 0:
+        if aihp <= 0:
             print("Oppenent's ",spokemon,"fainted")
             print("You win")
         if aihp>0:
@@ -351,14 +351,350 @@ def aimove(php,aihp):
         print(lpokemon,php,"HP")
         print(spokemon,aihp,"HP")
         pmove(php,aihp)
+        
+                    ## BELOW IS THE PVP CODE SECTION ##
 
+# First player 1 move
+def ppmove1():
+    print(p1name,"goes now")
+    if lpokemon=="Pikachu":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[1])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[3])
+        move2="Thunderbolt"
+        move4="Electroball"
+        select=input("Select move 1-4 ")
+    if lpokemon=="Charmander":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[6])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[7])
+        move2="Flame thrower"
+        move4="Ember"
+        select=input("Select move 1-4 ")
+    if lpokemon=="Bulbasaur":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[4])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[5])
+        move2="Vine whip"
+        move4="Seed bullet"
+        select=input("Select move 1-4 ")
+    if lpokemon=="Oshawatt":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[8])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[9])
+        move2="Water gun"
+        move4="Surf"
+        select=input("Select move 1-4 ")
+    
+    if select=="1":
+        print(lpokemon,"used Tackle")
+        damage=randint(5,10)
+        aihp=(aishp-damage)
+        print(lpokemon,"did",damage,"damage")
+        if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+        if aihp>0:
+            p2move1(aihp)
+            
+    elif select=="2":
+        print(lpokemon,"used ",move2)
+        damage=randint(12,20)
+        aihp=(aishp-damage)
+        print(lpokemon,"did",damage,"damage")
+        if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+        if aihp>0:
+            p2move1(aihp)
+            
+    elif select=="3":
+         print(lpokemon,"used Cut")
+         damage=randint(14,16)
+         aihp=(aishp-damage)
+         print(lpokemon,"did",damage,"damage")
+         if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+         if aihp>0:
+            p2move1(aihp)
+
+    elif select=="4":
+        print(lpokemon,"used ",move4)
+        damage=randint(15,23)
+        aihp=(aishp-damage)
+        print(lpokemon,"did",damage,"damage")
+        if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+        if aihp>0:
+            p2move1(aihp)
+    else:
+        print("Not valid entry.")
+        ppmove1()
+
+# First player 2 move
+def p2move1(aihp):
+    print(p2name,"goes now")
+
+    if spokemon=="Pidgot":
+        amove1="Gust"
+        amove3="Fly"
+    if spokemon=="Rattata":
+        amove1="scratch"
+        amove3="Bite"
+    if spokemon=="Machop":
+        amove1="Brick break"
+        amove3="Rock smash"
+    if spokemon=="Zubat":
+        amove1="Bite"
+        amove3="Air slash"
+    print("Move 1: ",amove1)
+    print("Move 2: ",aimoves[1])
+    print("Move 3: ",amove3)
+    print("Move 4: ",aimoves[3])
+    aselect=input("Select move 1-4 ")
+    
+    if aselect==1:
+        print(spokemon,"used ",amove1)
+        dmg=randint(12,20)
+        php=(pshp-dmg)
+        if php<0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,php,"HP")
+            print(spokemon,aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==2:
+        print (spokemon,"used Tackle")
+        dmg=randint(5,10)
+        php=(pshp-dmg)
+        if php < 0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,": ",php,"HP")
+            print(spokemon,": ",aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==3:
+        print(spokemon,"used ",amove3)
+        dmg=randint(15,23)
+        php=(pshp-dmg)
+        if php < 0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,": ",php,"HP")
+            print(spokemon,": ",aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==4:
+        print(spokemon,"used Cut")
+        dmg=randint(14,16)
+        php=(pshp-dmg)
+        if php < 0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,": ",php,"HP")
+            print(spokemon,": ",aihp,"HP")
+            ppmove(php,aihp)
+
+# All player 1 moves after first
+def ppmove(php,aihp):
+    print(p1name,"goes now")
+    if lpokemon=="Pikachu":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[1])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[3])
+        print("Heal")
+        move2="Thunderbolt"
+        move4="Electroball"
+        select=input("Select move 1-5 ")
+    if lpokemon=="Charmander":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[6])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[7])
+        print("Heal")
+        move2="Flame thrower"
+        move4="Ember"
+        select=input("Select move 1-5 ")
+    if lpokemon=="Bulbasaur":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[4])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[5])
+        print("Heal")
+        move2="Vine whip"
+        move4="Seed bullet"
+        select=input("Select move 1-5 ")
+    if lpokemon=="Oshawatt":
+        print("Move 1: ",pmoves[0])
+        print("Move 2: ",pmoves[8])
+        print("Move 3: ",pmoves[2])
+        print("Move 4: ",pmoves[9])
+        print("Heal")
+        move2="Water gun"
+        move4="Surf"
+        select=input("Select move 1-5 ")
+    
+    if select=="1":
+        print(lpokemon,"used Tackle")
+        damage=randint(5,10)
+        aihp=(aihp-damage)
+        print(lpokemon,"did ",damage,"damage")
+        if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+        if aihp>0:
+            p2move(php,aihp)
+            
+    if select=="2":
+        print(lpokemon,"used ",move2)
+        damage=randint(12,20)
+        aihp=(aihp-damage)
+        print(lpokemon,"did ",damage,"damage")
+        if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+        if aihp>0:
+            p2move(php,aihp)
+            
+    if select=="3":
+         print(lpokemon,"used Cut")
+         damage=randint(14,16)
+         aihp=(aihp-damage)
+         print(lpokemon,"did ",damage,"damage")
+         if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+         if aihp>0:
+            p2move(php,aihp)
+
+    if select=="4":
+        print(lpokemon,"used ",move4)
+        damage=randint(15,23)
+        aihp=(aihp-damage)
+        print(lpokemon,"did",damage,"damage")
+        if aihp < 0:
+            print("Oppenent's ",spokemon,"fainted")
+            print("You win")
+        if aihp>0:
+            p2move(php,aihp)
+
+    if select=="5":
+        print(p1name,"Used potion")
+        heal=randint(15,23)
+        php=(php+heal)
+        print(lpokemon,"healed ",heal," points of damage")
+        p2move(php,aihp)
+
+    if select=="7":
+        print("I know it's you Denney")
+        print("Ending program")
+
+def p2move(php,aihp):
+    print(p2name,"goes now")
+
+    if spokemon=="Pidgot":
+        amove1="Gust"
+        amove3="Fly"
+    if spokemon=="Rattata":
+        amove1="scratch"
+        amove3="Bite"
+    if spokemon=="Machop":
+        amove1="Brick break"
+        amove3="Rock smash"
+    if spokemon=="Zubat":
+        amove1="Bite"
+        amove3="Air slash"
+    print("Move 1: ",amove1)
+    print("Move 2: ",aimoves[1])
+    print("Move 3: ",amove3)
+    print("Move 4: ",aimoves[3])
+    print("Moove 5: Heal")
+    aselect=input("Select move 1-5 ")
+
+    if aselect==1:
+        print(spokemon,"used ",amove1)
+        dmg=randint(12,20)
+        php=(php-dmg)
+        if php < 0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,php,"HP")
+            print(spokemon,aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==2:
+        print (spokemon,"used Tackle")
+        dmg=randint(5,10)
+        php=(php-dmg)
+        if php < 0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,php,"HP")
+            print(spokemon,aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==3:
+        print(spokemon,"used ",amove3)
+        dmg=randint(15,23)
+        php=(php-dmg)
+        if php < 0:
+            print("Opponent's",lpokemon,"fainted")
+            print("You Win")
+        if php>0:
+            print(lpokemon,php,"HP")
+            print(spokemon,aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==4:
+        print(spokemon,"used Cut")
+        dmg=randint(14,16)
+        php=(php-dmg)
+        if php < 0:
+            print("Opponent's ",lpokemon,"fainted")
+            print("You Win")
+       f php>0:
+            print(lpokemon,php,"HP")
+            print(spokemon,aihp,"HP")
+            ppmove(php,aihp)
+
+    if aselect==5:
+        print(p2name,"used a potion")
+        heal=randint(15,23)
+        aihp=(aihp+heal)
+        print(lpokemon,php,"HP")
+        print(spokemon,aihp,"HP")
+        ppmove(php,aihp)
+        
 # Extra stuff and running commands for sub-scripts above
+players=input("How may players (1-2)? ")
 pokemon()
-print(lpokemon,"[HP: 100]")
-print("Red sends out", spokemon, "[HP: 100]")
-move=input("Fight or Quit? ")
-if move=="fight" or move=="Fight":
-    pmove1()
-if move=="quit" or move=='Quit':
-    print("Thank you for looking at this pokemon battle simulation by Will D")
+if players=='1':
+    print(lpokemon,"[HP: 100]")
+    print("Red sends out", spokemon, "[HP: 100]")
+    move=input("Fight or Quit? ")
+    if move=="fight" or move=="Fight":
+        pmove1()
+    if move=="quit" or move=='Quit':
+        print("Thank you for looking at this pokemon battle simulation by Will D")
+if players=='2':
+    p1name=input("Player 1, input your name: ")
+    print(lpokemon,"[HP: 100]")
+    p2name=input("Player 2, input your name name: ")
+    print(spokemon,"[HP: 100]")
+    ppmove1()
     
